@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import { RegistrationComponent } from './registration/registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

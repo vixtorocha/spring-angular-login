@@ -15,8 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -44,6 +46,8 @@ public class AppUser implements UserDetails {
   private Role Role;
   private Boolean locked = false;
   private Boolean enabled = true;
+  private Date lastLogin = null;
+  private Boolean loginStatus = false;
 
   public AppUser(String firstName, String lastName, String email, String password, com.example.demo.appuser.Role role) {
     this.firstName = firstName;

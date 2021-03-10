@@ -10,7 +10,7 @@ import {finalize} from "rxjs/operators";
 })
 export class AppComponent {
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    this.app.authenticate(undefined, undefined);
+    this.app.authenticate(undefined);
   }
   logout() {
     this.http.post('logout', {}).pipe(

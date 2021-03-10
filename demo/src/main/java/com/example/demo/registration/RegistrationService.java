@@ -21,7 +21,6 @@ public class RegistrationService {
   public ResponseEntity register(RegistrationRequest request) {
     boolean isValidEmail = emailValidator.test(request.getEmail());
     if(!isValidEmail) {
-//      throw new IllegalStateException("email não válido");
       return ResponseEntity.ok(new ResponseData("400", "Email já cadastrado"));
     }
     appUserService.singUpUser(
