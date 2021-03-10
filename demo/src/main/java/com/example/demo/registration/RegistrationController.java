@@ -1,6 +1,7 @@
 package com.example.demo.registration;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class RegistrationController {
   }
 
   @PostMapping
-  public String register(@RequestBody RegistrationRequest request){
+  public ResponseEntity register(@RequestBody RegistrationRequest request){
     return registrationService.register(request);
   }
 }
