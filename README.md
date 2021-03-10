@@ -11,24 +11,29 @@ BACKEND :
 - JPA
 - PostgreSQL
 
+# Entre na pasta raíz
+```sh
+    $ cd demo
+```  
+
 # Rodando o Backend.
 Compilar:
 ```sh
-    $ mvn clean package
+    $ ./mvnw clean package
 ```  
 Ou executar com:
 ```sh
-    $ mvn spring-boot:run
+    $ ./mvnw spring-boot:run
 ```  
 
 # Rodando o Frontend.
 - Instalando as dependências :
 ```sh
-    $ npm install
+    $ ./npm install
 ```  
 - Execute com:
 ```sh
-    $ ng serve
+    $ ./ng serve
 ```  
 - Abra o navegador em http://localhost:4200
 - Para mudar a porta, adicione --port ao comando.
