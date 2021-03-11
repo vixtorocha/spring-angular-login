@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {AppRoutingModule} from "./app-routing.module";
+import {AuthGuard} from "./security/auth-guard";
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -21,12 +23,6 @@ export class XhrInterceptor implements HttpInterceptor {
   }
 }
 
-const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent },
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +33,12 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
   ],
-  providers: [AppService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+  providers: [AppService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }, AuthGuard],
   bootstrap: [AppComponent]
 })
 
