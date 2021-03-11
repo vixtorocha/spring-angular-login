@@ -4,15 +4,20 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./security/auth-guard";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   {
     path:'',
-    component:RegistrationComponent
+    component:HomeComponent
   },
   {
     path:'login',
     component:LoginComponent
+  },
+  {
+    path:'registration',
+    component:RegistrationComponent
   },
   {
     path:'dashboard',
