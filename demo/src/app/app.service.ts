@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, throwError} from "rxjs";
-import {catchError, retry} from "rxjs/operators";
+import {BehaviorSubject, Observable, throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
 import {RequestRegistration} from "./dto/request-registration";
 import {ResponseData} from "./dto/response-data";
+import {Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -20,8 +21,20 @@ export class AppService {
   baseUrl = "http://localhost:8080/api/v1";
   registrationUrl = "/registration"
   loginUrl = "/auth/login"
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
+  }
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); // {2}
+  }
+
+  logout() {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userName");
+    this.loggedIn.next(false);
+    this.router.navigate(["/login"]);
   }
 
   authenticate(requestLoginDTO): Observable<ResponseData> {
@@ -30,7 +43,16 @@ export class AppService {
         JSON.stringify(requestLoginDTO),
         httpOptions
     ).pipe(
-        catchError(this.handleError)
+      map(res => {
+        if(res.responseCode == "200"){
+          this.loggedIn.next(true);
+        }
+        return res
+      }),
+        catchError(() => {
+          this.loggedIn.next(false);
+          return this.handleError
+        })
     )
   }
 

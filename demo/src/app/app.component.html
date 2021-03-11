@@ -2,9 +2,9 @@
     <ul class="nav nav-pills">
         <li><a routerLinkActive="active" routerLink="/">Início</a></li>
         <li><a routerLinkActive="active" routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
-        <li><a routerLinkActive="active" routerLink="/registration">Cadastro</a></li>
-        <li><a (click)="logout()">Logout</a></li>
+        <li *ngIf="!(isLoggedIn$ | async)"><a routerLinkActive="active" routerLink="/login">Login</a></li>
+        <li *ngIf="!(isLoggedIn$ | async)"><a routerLinkActive="active" routerLink="/registration">Cadastro</a></li>
+        <li *ngIf="isLoggedIn$ | async"><a (click)="onLogout()">Sair</a></li>
     </ul>
 </div>
 <div class="container">
