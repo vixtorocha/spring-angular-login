@@ -1,8 +1,5 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import { AppService } from './app.service';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import {AuthService} from "./auth.service";
 import {Observable} from "rxjs";
 
 @Component({

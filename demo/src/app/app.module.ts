@@ -6,7 +6,6 @@ import { AppService } from './app.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
-import {RouterModule, Routes} from "@angular/router";
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AppRoutingModule} from "./app-routing.module";
